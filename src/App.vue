@@ -1,20 +1,15 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
-import PostList from './components/PostList.vue'
-import ActionsList from './components/ActionsList.vue'
+import { defineComponent } from 'vue';
+import ListView from './views/ListView.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    PostList,
-    ActionsList
+    ListView,
   },
 })
 </script>
 
 <template>
-  <div id="app">
-    <PostList />
-    <ActionsList />
-  </div>
+    <ListView />
 </template>

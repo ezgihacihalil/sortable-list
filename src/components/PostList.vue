@@ -1,41 +1,51 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
-import { useStore } from '../stores/actions'
+import { ref, watchEffect } from 'vue';
+import { useStore } from '../stores/actions';
+import { POSTS_API_URL } from '../constants';
+import fetcher from '../utils/fetcher';
 
-const posts = ref([]);
+interface Post {
+  id: number;
+  title: string;
+}
+
+enum Direction {
+  Up = 'up',
+  Down = 'down',
+}
+
+const posts = ref<Post[]>([]);
 const store = useStore();
 
 watchEffect(async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts')
-  const data = await response.json()
-  posts.value = data.slice(0, 5)
-})
-
-const moveUp = (index: number) => {
-  if (index > 0) {
-    const temp = posts.value[index]
-    posts.value[index] = posts.value[index - 1]
-    posts.value[index - 1] = temp
-    store.add(`Moved Post ${temp.id} from index ${index} to index ${index - 1}`) // use the store's add method
+  try {
+    const { data } = await fetcher.get(POSTS_API_URL);
+    posts.value = data.slice(0, 5);
+  } catch (error) {
+    console.error('Failed to fetch posts:', error);
   }
-}
+});
 
-const moveDown = (index: number) => {
-  if (index < posts.value.length - 1) {
-    const temp = posts.value[index]
-    posts.value[index] = posts.value[index + 1]
-    posts.value[index + 1] = temp
-    store.add(`Moved Post ${temp.id} from index ${index} to index ${index + 1}`) // use the store's add method
+const movePost = (index: number, direction: Direction) => {
+  const newIndex = direction === Direction.Up ? index - 1 : index + 1;
+
+  if (newIndex >= 0 && newIndex < posts.value.length) {
+    const temp = posts.value[index];
+
+    posts.value[index] = posts.value[newIndex];
+    posts.value[newIndex] = temp;
+
+    store.add(`Moved Post ${temp.id} from index ${index} to index ${newIndex}`);
   }
-}
+};
 </script>
 
 <template>
   <div>
     <div v-for="(post, index) in posts" :key="post.id">
       <div>Post {{ post.id }}</div>
-      <button @click="moveUp(index)">Up</button>
-      <button @click="moveDown(index)">Down</button>
+      <button @click="movePost(index, Direction.Up)">Up</button>
+      <button @click="movePost(index, Direction.Up)">Down</button>
     </div>
   </div>
 </template>
