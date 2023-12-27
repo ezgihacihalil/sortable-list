@@ -3,6 +3,8 @@ import { ref, watchEffect } from 'vue';
 import { useStore } from '../stores/actions';
 import { POSTS_API_URL } from '../constants';
 import fetcher from '../utils/fetcher';
+import upArrow from '../assets/up-arrow.svg';
+import downArrow from '../assets/down-arrow.svg';
 
 interface Post {
   id: number;
@@ -35,17 +37,27 @@ const movePost = (index: number, direction: Direction) => {
     posts.value[index] = posts.value[newIndex];
     posts.value[newIndex] = temp;
 
-    store.add(`Moved Post ${temp.id} from index ${index} to index ${newIndex}`);
+    store.add(`Moved post ${temp.id} from index ${index} to index ${newIndex}`);
   }
 };
 </script>
 
 <template>
   <div>
-    <div v-for="(post, index) in posts" :key="post.id">
-      <div>Post {{ post.id }}</div>
-      <button @click="movePost(index, Direction.Up)">Up</button>
-      <button @click="movePost(index, Direction.Up)">Down</button>
+    <div 
+      v-for="(post, index) in posts" 
+      :key="post.id"
+      class="shadow-md bg-white rounded-md my-2 sm:my-4 h-20 px-4 flex items-center justify-between"
+    >
+      <div class="text-neutral-700 font-sans sm:text-lg">Post {{ post.id }}</div>
+      <div class="flex flex-col justify-center gap-6 h-4/6">
+        <button v-if="index !== 0" class="size-4" @click="movePost(index, Direction.Up)">
+          <img class="fill-purple-700" :src="upArrow" />
+        </button>
+        <button v-if="index !== 4" class="size-4" @click="movePost(index, Direction.Up)">
+          <img class="fill-purple-700" :src="downArrow" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
