@@ -18,14 +18,14 @@ const timeTravel = (index: number) => {
     </h1>
     <div class="bg-gray-200 items-center p-2 md:p-4">
       <div 
-        v-for="(action, index) in store.actions" 
-        :key="index"
+        v-for="(action) in store.actions" 
+        :key="action.id"
       >
         <div class="shadow-md bg-white p-2 flex w-full items-center justify-between border-b">
-          <p class="text-neutral-700 font-sans whitespace-nowrap overflow-hidden text-ellipsis text-sm">{{ action }}</p>
+          <p class="text-neutral-700 font-sans whitespace-nowrap overflow-hidden text-ellipsis text-sm">{{ action.description }}</p>
           <button 
             class="bg-green-400 text-neutral-700 font-sans font-semibold rounded-lg text-center px-2 py-1 whitespace-nowrap text-sm sm:px-4 sm:py-2 hover:bg-green-300" 
-            @click="timeTravel(index)"
+            @click="timeTravel(action.id)"
           >
             Time travel
           </button>

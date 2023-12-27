@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import PostList from "../components/PostList.vue";
+import PostList from "../components/PostList/PostList.vue";
 import ActionList from "../components/ActionList.vue";
 
 export default defineComponent({
