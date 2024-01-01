@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { defineExpose } from 'vue';
 import PostList from '../components/PostList/PostList.vue';
 import ActionList from '../components/ActionList.vue';
 
-defineExpose({ PostList, ActionList });
 </script>
 
 <template>
