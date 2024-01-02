@@ -32,8 +32,18 @@ onMounted(fetchPosts);
 </script>
 
 <template>
-  <transition name="fade">
-    <div v-if="toastMessage" class="toast">{{ toastMessage }}</div>
+  <transition
+    enter-active-class="transition-opacity duration-500"
+    leave-active-class="transition-opacity duration-500"
+    enter-class="opacity-0"
+    leave-to-class="opacity-0"
+  >
+    <div
+      v-if="toastMessage"
+      class="fixed bottom-0 left-0 right-0 p-4 bg-red-500 text-white text-center transition-transform duration-500"
+    >
+      {{ toastMessage }}
+    </div>
   </transition>
   <transition-group tag="div">
     <div
@@ -50,25 +60,3 @@ onMounted(fetchPosts);
     </div>
   </transition-group>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.toast {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1em;
-  background-color: red;
-  color: white;
-  text-align: center;
-}
-</style>

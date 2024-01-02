@@ -9,7 +9,7 @@ import ActionList from '../components/ActionList.vue';
     class="bg-gray-100 relative px-2 py-6 h-screen min-h-screen w-screen sm:p-6 lg:p-9 overflow-x-hidden"
   >
     <div
-      class="bg-purple-700 h-72 w-[150%] md:w-[180%] absolute -left-20 md:-left-24 -top-60 md:-top-64 -rotate-12"
+      class="bg-purple-700 h-72 w-[150%] md:w-[180%] absolute -left-20 md:-left-24 -top-60 md:-top-64 -rotate-12 lg:-top-72 lg:-left-60"
     />
     <div class="relative z-10">
       <h1 class="text-neutral-100 font-semibold font-sans text-2xl mt-2 sm:mt-6">
