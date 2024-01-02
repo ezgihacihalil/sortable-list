@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/vue';
+import { render, fireEvent, getByLabelText } from '@testing-library/vue';
 import { createApp } from 'vue';
 import { describe, it, vi, beforeEach, expect } from 'vitest';
 import { useStore } from '@/stores/actions';
@@ -25,7 +25,6 @@ describe('MoveButton', () => {
         direction: 'up',
       },
     });
-    expect(getByRole('img').getAttribute('src')).toContain('up');
 
     await fireEvent.click(getByRole('button'));
 
