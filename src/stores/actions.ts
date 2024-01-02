@@ -19,12 +19,14 @@ export const useStore = defineStore({
 
       if (newIndex >= 0 && newIndex < this.posts.length) {
         const [movedPost] = this.posts.splice(index, 1);
+
         this.posts.splice(newIndex, 0, movedPost);
 
         this.actions.unshift({
           id: Date.now(),
           description: `Moved post ${movedPost.id} from index ${index} to index ${newIndex}`,
         });
+        
         this.postHistory.unshift([...this.posts]);
       }
     },

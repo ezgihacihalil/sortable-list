@@ -14,7 +14,7 @@ const timeTravel = (index: number) => {
     <div class="bg-gray-200 items-center p-2 md:p-4">
       <transition-group name="fade" tag="div">
         <div v-for="action in store.actions" :key="action.id">
-          <div class="shadow-md bg-white p-2 flex w-full items-center justify-between border-b">
+          <div class="action shadow-md bg-white p-2 flex w-full items-center justify-between border-b">
             <p
               class="text-neutral-700 font-sans whitespace-nowrap overflow-hidden text-ellipsis text-sm"
             >
