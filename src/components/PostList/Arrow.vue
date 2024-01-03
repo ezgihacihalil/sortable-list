@@ -19,6 +19,7 @@ const rotationClass = computed(() => {
     height="24"
     viewBox="0 0 24 24"
     :class="[color, rotationClass]"
+    class="size-4"
   >
     <polygon
       points="12 17.414 3.293 8.707 4.707 7.293 12 14.586 19.293 7.293 20.707 8.707 12 17.414"

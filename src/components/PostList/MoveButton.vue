@@ -21,7 +21,7 @@ defineExpose({
 </script>
 
 <template>
-  <button class="size-4" @click="handleMove" :aria-label="`Move ${direction}`">
+  <button @click="handleMove" :aria-label="`Move ${direction}`">
     <Arrow color="fill-temper-purple" :direction="direction" />
   </button>
 </template>

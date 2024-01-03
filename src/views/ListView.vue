@@ -19,7 +19,7 @@ const showError = () => {
     class="bg-gray-100 relative px-2 py-6 h-screen min-h-screen w-screen sm:p-6 lg:p-9 overflow-x-hidden"
   >
     <div
-      class="bg-temper-purple h-72 w-[150%] md:w-[180%] absolute -left-20 md:-left-24 -top-60 md:-top-64 -rotate-12 lg:-top-72 lg:-left-60"
+      class="bg-temper-purple absolute -top-[445px] sm:-top-[445px] -left-[195px] sm:-left-[100px] h-[55%] sm:h-2/4 -rotate-[25deg] sm:-rotate-12 w-[200%]"
     />
     <div class="relative z-10">
       <h1 class="text-neutral-100 font-semibold font-sans text-2xl mt-2 sm:mt-6">
